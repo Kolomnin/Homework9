@@ -1,39 +1,53 @@
-
+import java.util.Objects;
 
 public class Book {
-    private final String nameBook;
-    private final Author author;
-    private Integer yearOfPublication;
+    final private String name;
+    final private Author author;
+    private int yearPublishing;
 
-    public Book(String nameBook, Author author, int yearOfPublication) {
-        this.nameBook = nameBook;
+    public Book (String name, Author author, int yearPublishing){
+        this.name = name;
         this.author = author;
-        this.yearOfPublication = yearOfPublication;
-
+        this.yearPublishing = yearPublishing;
+    }
+    public Book (String name, String firstName, String lastName){
+        this.name = name;
+        this.author = new Author(firstName,lastName);
     }
 
-    public String getNameBook() {
-        return nameBook;
+    public String getName() {
+        return name;
     }
 
     public Author getAuthor() {
         return author;
     }
 
-    public int getYearOfPublication() {
-        return yearOfPublication;
+    public int getYearPublishing() {
+        return yearPublishing;
     }
-
-    public void setYearOfPublication(Integer yearOfPublication) {
-        this.yearOfPublication = yearOfPublication;
+    public void setYearPublishing (int yearPublishing){
+        this.yearPublishing = yearPublishing;
+    }
+    @Override
+    public String toString() {
+        return this.author + " " + this.name + " " + this.yearPublishing;
     }
 
     @Override
-    public String toString() {
-        return "Book{" +
-                "nameBook='" + nameBook + '\'' +
-                ", author=" + author +
-                ", yearOfPublication=" + yearOfPublication +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Book book = (Book) o;
+        return yearPublishing == book.yearPublishing && Objects.equals(name, book.name) && Objects.equals(author, book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, author, yearPublishing);
     }
 }
