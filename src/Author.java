@@ -25,4 +25,6 @@ public class Author {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+    @Override
+    public
 }
