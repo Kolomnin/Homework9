@@ -9,7 +9,6 @@ public class Author {
         this.lastName = lastName;
     }
 
-
     public String getFirstName() {
         return firstName;
     }
