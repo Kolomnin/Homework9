@@ -29,19 +29,20 @@ public class Book {
     public void setYearPublishing (int yearPublishing){
         this.yearPublishing = yearPublishing;
     }
+
     @Override
     public String toString() {
-        return this.author + " " + this.name + " " + this.yearPublishing;
+        return "Book{" +
+                "name='" + name + '\'' +
+                ", author=" + author +
+                ", yearPublishing=" + yearPublishing +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
         return yearPublishing == book.yearPublishing && Objects.equals(name, book.name) && Objects.equals(author, book.author);
     }
